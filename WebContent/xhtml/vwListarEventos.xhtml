@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script language="javascript" src="../js/locale-primefaces.js"
+		charset="ISO-8859-1" />
+	<script language="javascript" src="../js/listarEventos.js"
+		charset="ISO-8859-1" />
+
+</h:head>
+<h:body>
+
+	<h:form id="formulario">
+		<p:panel id="panel" header="Lista de Eventos Cadastrados">
+			<h:graphicImage url="../../images/logo.png"></h:graphicImage>
+			<h:inputHidden id="codEvento" value="#{eventoController.eventoBeanSelecionado.codEvento}" />
+
+			<p:dataTable id="tableEventos" style="width: 75%;" rows="10" var="evento" 
+				value="#{eventoController.listaEventoBean}" selection="#{eventoController.eventoBeanSelecionado}"
+				
+				rowKey="#{evento.codEvento}">
+
+				<f:facet name="header">Lista de Eventos</f:facet>
+				<p:column style="width: 40%;" headerText="Titulo Evento">
+					<h:inputHidden value="#{evento.codEvento}" />
+					<h:outputText value="#{evento.tituloEvento}" />
+				</p:column>
+				<p:column style="width: 15%;" headerText="Data Evento">
+					<h:outputText value="#{evento.dataEvento}">
+						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+					</h:outputText>
+				</p:column>
+				<p:column style="width: 20%;" headerText="Cidade">
+					<h:outputText value="#{evento.cidadeEvento}" />
+				</p:column>
+				<p:column style="width: 15%;" headerText="Valor Inscrição">
+					<h:outputText value="#{evento.valorIncricao}">
+					<f:convertNumber type="currency" currencySymbol="R$" minFractionDigits="2" maxFractionDigits="2"></f:convertNumber>
+					</h:outputText>
+				</p:column>
+				<p:column selectionMode="single" style="width: 10%;" headerText="Selecione" process="tableEventos" update=":formulario:codEvento"/>
+				
+
+			</p:dataTable>
+
+			<p:commandButton ajax="false" value="Novo"   action="#{eventoController.criar}">
+			</p:commandButton>
+			<p:commandButton ajax="false" value="Editar" action="#{eventoController.consultar}">
+			</p:commandButton>
+			<h:messages />
+		</p:panel>
+	</h:form>
+
+</h:body>
+
+</html>

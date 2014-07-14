@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13999338970880" configfile="/ProjetoEventos/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="84" y="156" id="pf14003918790630" outlinks="pf14003918790631 pf14003918790632 pf14005426638572 pf14011287513913 pf14022871411470" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="xhtml/sucesso" x="555" y="12" id="pf14003918790646" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14003918790631" path="/xhtml/sucesso.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="xhtml/falha" x="562" y="84" id="pf14003918790647" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14003918790632" path="/xhtml/falha.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="xhtml/vwListarEventos" x="533" y="300" id="pf14005426638575" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf14005426638572" path="/xhtml/vwListarEventos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="xhtml/vwIncluirEvento.xhtml" id="pf14011287513914" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf14011287513913" path="/xhtml/vwIncluirEvento.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="xhtml/vwEditarEvento" id="pf14022871411481" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf14022871411470" path="/xhtml/vwEditarEvento.xhtml"/>
+  <links id="pf14003918790631" target="pf14003918790646" source="pf14003918790630" outcome="sucesso"/>
+  <links id="pf14003918790632" target="pf14003918790647" source="pf14003918790630" outcome="falha"/>
+  <links id="pf14005426638572" target="pf14005426638575" source="pf14003918790630" outcome="listar"/>
+  <links id="pf14011287513913" target="pf14011287513914" source="pf14003918790630" outcome="criar"/>
+  <links id="pf14022871411470" target="pf14022871411481" source="pf14003918790630" outcome="editar"/>
+</pageflow:Pageflow>

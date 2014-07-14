@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script language="javascript" src="../js/locale-primefaces.js"	charset="ISO-8859-1" />
+</h:head>
+<h:body>
+	<h:form id="formulario">
+		<p:panel id="panel" header="Cadastro de Eventos">
+
+			<p:panelGrid columns="2">
+				<f:facet name="header">
+					<p:graphicImage url="../../images/logo.png"></p:graphicImage>
+					<h:inputHidden id="codEvento" value="#{eventoController.eventoBean.codEvento}"></h:inputHidden>
+				</f:facet>
+
+
+				<p:outputLabel for="tipoEvento" value="Selecione um Tipo de Evento:"></p:outputLabel>
+				<p:selectOneMenu id="tipoEvento" name="tipoEvento" size="1"
+					value="#{eventoController.eventoBean.tipoEvento}" required="true" requiredMessage="Selecione um Tipo de Evento">
+					<f:selectItem itemLabel="Selecione um Tipo" itemValue="" />
+					<f:selectItem itemLabel="Palestra" itemValue="1" />
+					<f:selectItem itemLabel="Mini-curso" itemValue="2" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="tituloEvento" value="Nome do Evento:"></p:outputLabel>
+				<p:inputText id="tituloEvento"
+					value="#{eventoController.eventoBean.tituloEvento}" size="50"
+					maxlength="20" 
+					placeholder="Informe um Título com Até 20 Caracteres."
+					required="true" requiredMessage="Informe um Titulo Valido parao Evento.">
+					<f:validateLength minimum="5" maximum="20" />
+				</p:inputText>
+
+				<p:outputLabel for="descricaoEvento" value="Descrição do Evento:"></p:outputLabel>
+				<p:inputTextarea rows="2" cols="48" counter="display"
+					maxlength="100"
+					counterTemplate="Você ainda pode digitar {0} caracteres."
+					autoResize="false" id="descricaoEvento"
+					placeholder="Informe uma descrição para o Evento de até 100 Caracteres."
+					value="#{eventoController.eventoBean.descricaoEvento}" required="true" requiredMessage="Informe uma Descrição Válida.">
+					<f:validateLength minimum="5" maximum="100" />
+				</p:inputTextarea>
+				<br></br>
+				<h:outputText id="display"></h:outputText>
+
+
+				<p:outputLabel for="popup" value="Data do Evento: "></p:outputLabel>
+				<p:calendar id="popup" locale="pt_BR" mask="99/99/9999"
+					pattern="dd/MM/yyyy"
+					value="#{eventoController.eventoBean.dataEvento}" required="true" requiredMessage="Informe uma Data Correta."></p:calendar>
+
+				<p:outputLabel for="horaEvento"
+					value="Selecione o Horario de Início do Evento:"></p:outputLabel>
+				<p:selectOneMenu id="horaEvento" size="1" value="#{eventoController.eventoBean.horaEvento}" required="true" requiredMessage="Selecione a Hora do Evento.">
+					<f:selectItem itemLabel="Selecione um Horário" itemValue="" />
+					<f:selectItem itemLabel="08:00" itemValue="08:00" />
+					<f:selectItem itemLabel="08:30" itemValue="08:30" />
+					<f:selectItem itemLabel="09:00" itemValue="09:00" />
+					<f:selectItem itemLabel="09:30" itemValue="09:30" />
+					<f:selectItem itemLabel="10:00" itemValue="10:00" />
+					<f:selectItem itemLabel="10:30" itemValue="10:30" />
+					<f:selectItem itemLabel="11:00" itemValue="11:00" />
+					<f:selectItem itemLabel="11:30" itemValue="11:30" />
+					<f:selectItem itemLabel="12:00" itemValue="12:00" />
+					<f:selectItem itemLabel="12:30" itemValue="12:30" />
+					<f:selectItem itemLabel="13:00" itemValue="13:00" />
+					<f:selectItem itemLabel="13:30" itemValue="13:30" />
+					<f:selectItem itemLabel="14:00" itemValue="14:00" />
+					<f:selectItem itemLabel="14:30" itemValue="14:30" />
+					<f:selectItem itemLabel="15:00" itemValue="15:00" />
+					<f:selectItem itemLabel="15:30" itemValue="15:30" />
+					<f:selectItem itemLabel="16:00" itemValue="16:00" />
+					<f:selectItem itemLabel="16:30" itemValue="16:30" />
+					<f:selectItem itemLabel="17:00" itemValue="17:00" />
+					<f:selectItem itemLabel="17:30" itemValue="17:30" />
+					<f:selectItem itemLabel="18:00" itemValue="18:00" />
+					<f:selectItem itemLabel="18:30" itemValue="18:30" />
+					<f:selectItem itemLabel="19:00" itemValue="19:00" />
+					<f:selectItem itemLabel="19:30" itemValue="19:30" />
+					<f:selectItem itemLabel="20:00" itemValue="20:00" />
+					<f:selectItem itemLabel="20:30" itemValue="20:30" />
+					<f:selectItem itemLabel="21:00" itemValue="21:00" />
+					<f:selectItem itemLabel="21:30" itemValue="21:30" />
+					<f:selectItem itemLabel="22:00" itemValue="22:00" />
+					<f:selectItem itemLabel="22:30" itemValue="22:30" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Emite Certificado de Participação?"></p:outputLabel>
+				<p:selectOneMenu id="emiteCertificadoEvento" size="1" value="#{eventoController.eventoBean.emiteCertificado}" required="true" requiredMessage="Selecione se Emite ou Não Certificado." >
+					<f:selectItem itemValue="" itemLabel="Selecione!" />
+					<f:selectItem itemValue="1" itemLabel="Sim" />
+					<f:selectItem itemValue="0" itemLabel="Não" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Endereço do Evento:"></p:outputLabel>
+				<p:inputText id="logradEvento"	value="#{eventoController.eventoBean.logradEvento}" size="50"
+					maxlength="50" placeholder="Avenida, Rua, Travessa e Etc."	required="true" requiredMessage="Informe corretamente um nome de Rua, Av e etc.">
+					<f:validateLength minimum="5" maximum="50" />
+				</p:inputText>
+
+				<p:outputLabel value="Bairro:"></p:outputLabel>
+				<p:inputText id="bairroEvento"
+					value="#{eventoController.eventoBean.bairroEvento}" size="50"
+					maxlength="50" placeholder="Bairro, Setor, Distrito e etc."
+					required="true" requiredMessage="Informe corretamente um nome de Bairro, Setor e etc.">
+					<f:validateLength minimum="5" maximum="50" />
+				</p:inputText>
+
+				<p:outputLabel value="Cidade:"></p:outputLabel>
+				<p:inputText id="cidadeEvento"
+					value="#{eventoController.eventoBean.cidadeEvento}" size="50"
+					maxlength="50"
+					placeholder="Digite o Nome da Cidade."
+					required="true" requiredMessage="Informe corretamente um nome de Cidade.">
+					<f:validateLength minimum="5" maximum="50" />
+				</p:inputText>
+
+				<p:outputLabel value="Selecione a UF da Cidade: "></p:outputLabel>
+				<p:selectOneMenu id="ufEstado"
+					value="#{eventoController.eventoBean.ufEstado}" required="true" requiredMessage="Selecione um dos Estados da Lista.">
+					<f:selectItem itemValue="" itemLabel="Selecione uma UF"></f:selectItem>
+					<f:selectItem itemValue="GO" itemLabel="Goiás"></f:selectItem>
+					<f:selectItem itemValue="MS" itemLabel="Mato Grosso do Sul"></f:selectItem>
+					<f:selectItem itemValue="MT" itemLabel="Mato Grosso"></f:selectItem>
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Valor da Inscrição do Evento: "></p:outputLabel>
+				<p:inputText id="valorIncricao"
+					value="#{eventoController.eventoBean.valorIncricao}" maxlength="10"
+					size="50"
+					required="true" requiredMessage="Informe o Valor da Inscrição.">
+					<f:convertNumber maxFractionDigits="2" currencySymbol="R$" minFractionDigits="2"></f:convertNumber>
+				</p:inputText>
+				<f:facet name="footer">
+					<h:panelGroup>
+						<p:commandButton value="Alterar" action="#{eventoController.alterar}" ajax="false" />
+						<p:commandButton value="Excluir" ajax="false" action="#{eventoController.excluir}" >
+							
+						</p:commandButton>
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+        					<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        					<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    					</p:confirmDialog>
+						<p:messages />
+					</h:panelGroup>
+				</f:facet>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>
