@@ -17,6 +17,7 @@ import br.eventos.entidade.Evento;
 import br.eventos.negocio.EventosService;
 import br.eventos.util.Convert;
 import br.eventos.util.EventosException;
+import br.eventos.util.UF;
 
 @ManagedBean(name="eventoController")
 @SessionScoped
@@ -31,6 +32,8 @@ public class EventoController {
 	private EventosService eventosService;
 	@Autowired
 	private EventoBean eventoBeanSelecionado;
+	@Autowired
+	private List<UF> listaUF;
 
 	/**
 	 * Construtor de EventoController
@@ -300,6 +303,14 @@ public class EventoController {
 
 	public void setEventoBeanSelecionado(EventoBean eventoBeanSelecionado) {
 		this.eventoBeanSelecionado = eventoBeanSelecionado;
+	}
+
+	public List<UF> getListaUF() {
+		return listaUF;
+	}
+
+	public void setListaUF(List<UF> listaUF) {
+		this.listaUF = listaUF;
 	}
 	
 }
